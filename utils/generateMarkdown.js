@@ -11,7 +11,7 @@ function renderLicenseLink(license) { }
 function renderLicenseSection(license) { }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+function template(data) {
   return `# ${data.title} 
 
   ## Description 
@@ -31,30 +31,19 @@ function generateMarkdown(data) {
    This app is yours to use and explore, but if you'd like a starting point, follow these guidelines:
    ${data.usage}
 
-  ## ${data.credits}
-    List your collaborators, if any, with links to their GitHub profiles.
-    
-    If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-    
-    If you followed tutorials, include links to those here as well.
+  ## Credits
+    This project was made possible with the help of the following people: 
+    ${data.credits}
   
   ## License
     This project is covered by a ${data.license} license. For more information please visit the repo's license tab.
-
-  ## Badges 
-    ${data.badges}
-    ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-    
-    Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
     
   ## Features
     Key features of this app include:
     ${data.features}
   
   ## How to Contribute 
-    If you have any questions or would like to contribute to this project, please reach me at ${data.howToContribute}
-    
-`;
-}
+    If you have any questions or would like to contribute to this project, please reach me at ${data.howToContribute}.
+`}
 
-module.exports = generateMarkdown;
+module.exports = template;
