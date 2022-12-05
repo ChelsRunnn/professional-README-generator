@@ -1,7 +1,9 @@
 // TODO: Include packages needed for this application
-const generateMarkdown = require('./utils/generateMarkdown.js');
+// const generateMarkdown = require('./utils/generateMarkdown.js');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateTemplate = require('./utils/generateMarkdown.js');
+// const template = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 inquirer
@@ -16,11 +18,6 @@ inquirer
             type: 'input',
             message: 'Provide a short description of the project, include your motivation and/or the problem your app solves.',
             name: 'description',
-        },
-        {
-            type: 'confirm',
-            message: 'Would you like to include a Table of Contents?',
-            name: 'toC',
         },
         {
             type: 'input',
@@ -40,7 +37,7 @@ inquirer
         {
             type: 'checkbox',
             message: 'What kind of license does this project have?',
-            choices: ['MIT', 'Apache License 2.0', 'ISC'],
+            choices: ['MIT', 'Apache License 2.0', 'ISC', 'None'],
             name: 'license'
         },
         {
@@ -60,17 +57,15 @@ inquirer
     .then(function (data) {
         let fileName = `${data.title.toLowerCase().split(' ').join('')}.md`;
         // DONE created file name generated from user input of project name
+console.log(data.license);
+console.log(data.title);
+        // console.log(generateTemplate);
+        const template = generateTemplate(data);
+        // this allows me to pull the template (its return value from the func!)
 
-        // console.log(data);
-        // console.log(generateMarkdown.template);
-
-        // fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-        //     err ? console.log(err) : console.log('README successfully created!'));
-// the above 2 lines work to create file using .prompt answers
-
-            fs.writeFile(fileName, (generateMarkdown.template, null, '\t'), (err) =>
+        fs.writeFile(fileName, (template), (err) =>
             err ? console.log(err) : console.log('README successfully created!'));
-
+        // the above 2 lines work to create file using .prompt answers
     });
 
 
@@ -86,9 +81,3 @@ inquirer
 // };
 // pull the file name from user input of project title
 // use the exported generateMarkdown function?
-
-// TODO: Create a function to initialize app
-function init() { }
-
-// Function call to initialize app
-init();
