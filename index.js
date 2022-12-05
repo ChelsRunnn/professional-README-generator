@@ -1,13 +1,10 @@
-// TODO: Include packages needed for this application
-// const generateMarkdown = require('./utils/generateMarkdown.js');
+// Packages needed for this application:
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateTemplate = require('./utils/generateMarkdown.js');
-// const template = require('./utils/generateMarkdown.js');
 
-// TODO: Create an array of questions for user input
+//Array of questions for user input:
 inquirer
-    // .prompt(questions)
     .prompt([
         {
             type: 'input',
@@ -50,34 +47,22 @@ inquirer
             message: 'What is your email',
             name: 'howToContribute'
         }
+        {
+            type: 'input',
+            message: 'What is your GitHub username?',
+            name: 'gitHub'
+        }
     ])
-    // DONE .prompt questions
 
-    // .then(writeToFile())
+    // User input creates file:
     .then(function (data) {
         let fileName = `${data.title.toLowerCase().split(' ').join('')}.md`;
-        // DONE created file name generated from user input of project name
-console.log(data.license);
-console.log(data.title);
-        // console.log(generateTemplate);
+        // File name generated from user input of project title
+
         const template = generateTemplate(data);
-        // this allows me to pull the template (its return value from the func!)
+        // Pull the template from the generatedMarkdown file
 
         fs.writeFile(fileName, (template), (err) =>
             err ? console.log(err) : console.log('README successfully created!'));
-        // the above 2 lines work to create file using .prompt answers
+        // Writes file using .prompt answers to fill the template
     });
-
-
-// const questions = [] ––– can move Qs into this array to clean up code down the line
-
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {} fileName, data throwing error that fileName was already declared
-
-// function writeToFile() {
-//     let fileName = `${data.title.toLowerCase().split(' ').join('')}.json`;
-//     fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-//         err ? console.log(err) : console.log('README successfully created!'));
-// };
-// pull the file name from user input of project title
-// use the exported generateMarkdown function?
