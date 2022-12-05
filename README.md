@@ -17,6 +17,7 @@
 
   ## Usage 
  Simply type <node index.js> in the command line to run this app.
+ See the app in action [here] (https://drive.google.com/file/d/141Y1YQMWP7AKQUq4__3jAq0fayYj8PXG/view)!
 
 
   ## Credits
