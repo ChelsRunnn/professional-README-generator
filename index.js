@@ -46,7 +46,7 @@ inquirer
             type: 'input',
             message: 'What is your email',
             name: 'howToContribute'
-        }
+        },
         {
             type: 'input',
             message: 'What is your GitHub username?',

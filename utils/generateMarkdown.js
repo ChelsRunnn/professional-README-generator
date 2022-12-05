@@ -72,7 +72,7 @@ function generateTemplate(data) {
   
 
   ## License 
-  //   This work is cover by a ${renderLicenseBadge(data)}. For more information on that, visit the license page here, ${renderLicenseLink(data)}.
+  This work is cover by a ${renderLicenseBadge(data)}. For more information on that, visit the license page here, ${renderLicenseLink(data)}.
 
 
   ## Key Features
